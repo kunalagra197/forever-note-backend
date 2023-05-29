@@ -1,11 +1,11 @@
 const express=require('express')
 const router=express.Router();
-const User=require('../server/models/User');
+const User=require('../models/User');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const JWT_SECRET='KunalAgrawal'
-const fetchuser=require('../server/middleware/fetchuser');
+const fetchuser=require('../middleware/fetchuser');
 // route-1 validation and create a user
 router.post('/createuser',[ 
     body('name').isLength({min:3}),

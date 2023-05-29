@@ -3,15 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "setup-production": "npm run install-client && npm run build-client && npm install",
-    "build-client": "cd client && npm run build",
-    "install-client": "cd client && npm install",
-    "server": "nodemon index",
-    "client": "cd client && npm start",
-    "start": "concurrently \" npm run server\" \"npm run client\" ",
-    "build":"npm run build"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kunalagra197/Inotebook.git"
@@ -29,7 +21,7 @@
     "express-validator": "^6.14.2",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^5.5.0",
-    "mongoose": "^6.6.4"
+    "mongoose": "^7.2.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
