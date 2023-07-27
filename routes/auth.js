@@ -44,7 +44,7 @@ router.post('/createuser',[
     }
     success=true;
     const jwtData=jwt.sign(data,JWT_SECRET);
-    console.log(jwtData)
+    // console.log(jwtData)
     res.json({success,jwtData});
   }
   catch(error)
@@ -99,7 +99,7 @@ router.post('/login',[
 router.post('/getuser',fetchuser,async(req,res)=>{
   try {
     userid=req.user.id
-    console.log(userid)
+    // console.log(userid)
     const user=await User.findById(userid).select("-password")
     res.send(user)
   } catch (error) {
