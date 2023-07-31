@@ -98,8 +98,7 @@ router.post('/login',[
 //Route-3  Get user details
 router.post('/getuser',fetchuser,async(req,res)=>{
   try {
-    userid=req.user.id
-    // console.log(userid)
+    userid=req.user.id;
     const user=await User.findById(userid).select("-password")
     res.send(user)
   } catch (error) {

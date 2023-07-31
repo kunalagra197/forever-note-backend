@@ -1,6 +1,7 @@
 const express=require('express')
 const router=express.Router();
 const Notes=require('../models/Notes');
+const User=require('../models/User');
 const fetchuser=require('../middleware/fetchuser');
 const { body, validationResult } = require('express-validator');
 // Route-1:Get all the notes using :GET"/api/notes/getuser".Login required
@@ -28,10 +29,14 @@ body('description','Description must be atleast 5 characters').isLength({min:5})
     {
       return res.status(400).json({ errors: errors.array() });
     }
-    const {title,description,tag}=req.body;
+    userid=req.user.id
+    // console.log(userid)
+    const user=await User.findById(userid).select("-password")
+    const {title,description,date}=req.body;
     const note=new Notes({
-        title,description,tag,user:req.user.id
+        title,description,date,user:req.user.id,email:user.email
     })
+    // console.log(user)
     const savedNote=await note.save();
     res.json(savedNote)
 }
@@ -46,12 +51,13 @@ catch (error) {
 router.put('/updatenote/:id',fetchuser,async(req,res)=>{
   // fetchuser check whether a user is login or not .It is a middleware 
   try{
-  const {title,description,tag}=req.body;
+  const {title,description,date}=req.body;
+  // console.log(req.body)
   const newNote={};
   // create a newnote object
   if(title){newNote.title=title};
   if(description){newNote.description=description}
-  if(tag){newNote.tag=tag}
+  if(date){newNote.date=date}
   let note=await Notes.findById(req.params.id);
   // checking whether a note by of given id exist or not
   if(!note){
