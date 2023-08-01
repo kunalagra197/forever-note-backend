@@ -12,7 +12,7 @@ const mailer = async () => {
 
     // Get tomorrow's date
     const tomorrow = moment().add(1, "day").startOf("day");
-    // console.log(tomorrow)
+    console.log(tomorrow)
 
     // Filter events happening tomorrow
     const tomorrowEvents = events.filter((event) =>

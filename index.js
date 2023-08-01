@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
   res.send('Hello!')
 })
 // const somedate=new Date('')
-schedule.scheduleJob('*/30 * * * *', async ()=>{
+schedule.scheduleJob('30 19 * * *', async ()=>{
   // console.log('The answer to life, the universe, and everything!');
   try {
     await mailer();
